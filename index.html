@@ -3,176 +3,831 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ExpertJourneys</title>
+
+<title>ExpertJourneys | Elevating Travel Through Expertise</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
 --brown:#5C3A21;
---beige:#F5EFE6;
+--cream:#F5EFE6;
 --gold:#C9A227;
---white:#fff;
+--white:#ffffff;
+--dark:#222;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
 body{
-background:var(--beige);
-color:var(--brown);
+<body>
+
+<header>
+<div class="logo">Expert<span>Journeys</span></div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="explore.html">Explore Experts</a>
+<a href="#">Businesses</a>
+<a href="#">Pricing</a>
+<a href="#">Login</a>
+</nav>
+</header>
+
+<section class="hero">
+
+<h1>Explore Tourism Experts</h1>
+
+<p>
+Browse trusted professionals across Africa and beyond.
+</p>
+
+</section>
+
+<section class="filters">
+
+<input type="text" placeholder="Search expert...">
+
+<select>
+<option>Category</option>
+<option>Tour Guide</option>
+<option>Chef</option>
+<option>Safari Poler</option>
+<option>Travel Consultant</option>
+<option>Local Artisan</option>
+</select>
+
+<select>
+<option>Country</option>
+<option>Botswana</option>
+<option>South Africa</option>
+<option>Kenya</option>
+</select>
+
+<select>
+<option>Rating</option>
+<option>★★★★★</option>
+<option>★★★★+</option>
+<option>★★★+</option>
+</select>
+
+<button>Search</button>
+
+</section>
+
+<section class="experts-grid">
+
+<div class="expert-card">
+
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e">
+
+<h3>James Molefe</h3>
+
+<p>Safari Guide</p>
+
+<p>📍 Botswana</p>
+
+<div class="stars">★★★★★</div>
+
+<a href="profile.html">View Profile</a>
+
+</div>
+
+<div class="expert-card">
+
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330">
+
+<h3>Sarah K.</h3>
+
+<p>Private Chef</p>
+
+<p>📍 South Africa</p>
+
+<div class="stars">★★★★★</div>
+
+<a href="profile.html">View Profile</a>
+
+</div>
+
+<div class="expert-card">
+
+<img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d">
+
+<h3>Peter N.</h3>
+
+<p>Travel Consultant</p>
+
+<p>📍 Kenya</p>
+
+<div class="stars">★★★★☆</div>
+
+<a href="profile.html">View Profile</a>
+
+</div>
+
+<div class="expert-card">
+
+<img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3">
+
+<h3>Kabelo D.</h3>
+
+<p>Safari Poler</p>
+
+<p>📍 Botswana</p>
+
+<div class="stars">★★★★★</div>
+
+<a href="profile.html">View Profile</a>
+
+</div>
+
+<div class="expert-card">
+
+<img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df">
+
+<h3>Mpho Arts</h3>
+
+<p>Local Artisan</p>
+
+<p>📍 Botswana</p>
+
+<div class="stars">★★★★★</div>
+
+<a href="profile.html">View Profile</a>
+
+</div>
+
+<div class="expert-card">
+
+<img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7">
+
+<h3>Daniel T.</h3>
+
+<p>Tour Guide</p>
+
+<p>📍 Tanzania</p>
+
+<div class="stars">★★★★☆</div>
+
+<a href="profile.html">View Profile</a>
+
+</div>
+
+</section>
+
+</body>
 }
 
-/* ===== HEADER ===== */
 header{
-position:sticky;
-top:0;
 background:var(--brown);
-color:white;
+padding:20px 8%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 20px;
+position:sticky;
+top:0;
 z-index:1000;
 }
 
-.logo{color:var(--gold);font-weight:bold;font-size:18px}
-
-/* mobile menu */
-.menu-btn{
-display:none;
-cursor:pointer;
-font-size:22px;
+.logo{
+font-size:28px;
+font-weight:700;
+color:white;
 }
 
-nav{
-display:flex;
-gap:15px;
+.logo span{
+color:var(--gold);
 }
 
 nav a{
 color:white;
 text-decoration:none;
-font-size:13px;
-cursor:pointer;
+margin-left:25px;
+font-weight:500;
 }
 
-nav a:hover{color:var(--gold)}
-
-/* ===== PAGES ===== */
-.page{display:none;padding:40px 20px;}
-.active{display:block}
-
-/* ===== HERO ===== */
 .hero{
-text-align:center;
-padding:90px 20px;
-background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee") center/cover;
-color:white;
-border-radius:0 0 20px 20px;
-}
-
-.hero h1{font-size:38px}
-
-/* ===== SEARCH ===== */
-.search{
-max-width:500px;
-margin:20px auto;
+height:90vh;
+background:url("https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1600") center/cover;
 display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
 }
 
-.search input{
-flex:1;
-padding:10px;
-border-radius:8px;
-border:1px solid #ddd;
-}
-
-/* ===== GRID ===== */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-max-width:1100px;
-margin:auto;
-}
-
-/* ===== CARD ===== */
-.card{
-background:white;
-padding:20px;
-border-radius:12px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-background:var(--gold);
-color:white;
-}
-
-/* ===== PROFILE ===== */
-.profile{
-background:white;
-padding:25px;
-border-radius:15px;
-max-width:800px;
-margin:auto;
-}
-
-/* ===== DASHBOARD ===== */
-.dashboard{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-max-width:900px;
-margin:auto;
-}
-
-.box{
-background:white;
-padding:20px;
-border-radius:12px;
-}
-
-/* ===== MODAL ===== */
-.modal{
-position:fixed;
+.hero::before{
+content:'';
+position:absolute;
 top:0;
 left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-display:none;
-justify-content:center;
-align-items:center;
+right:0;
+bottom:0;
+background:rgba(0,0,0,.55);
 }
 
-.modal-content{
-background:white;
+.hero-content{
+position:relative;
+color:white;
+max-width:800px;
 padding:20px;
-width:90%;
-max-width:350px;
-border-radius:12px;
 }
 
-/* ===== BUTTON ===== */
-.btn{
-padding:10px;
+.hero h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:20px;
+margin-bottom:30px;
+}
+
+.search-box{
+display:flex;
+background:white;
+border-radius:50px;
+overflow:hidden;
+max-width:700px;
+margin:auto;
+}
+
+.search-box input{
+flex:1;
 border:none;
-border-radius:8px;
-cursor:pointer;
-margin-top:10px;
-width:100%;
+padding:18px;
+outline:none;
 }
 
-.primary{background:var(--gold);color:white}
-.secondary{background:var(--brown);color:white}
+.search-box button{
+background:var(--gold);
+color:white;
+border:none;
+padding:18px 35px;
+cursor:pointer;
+}
 
-/* ===== MOBILE ===== */
-@media(max-width:700px){
-nav{display:none;flex-direction:column;background:var(--brown);position:absolute;top:60px;right:0;width:200px;padding:10px;}
-nav.show{display:flex}
-.menu-btn{display:block}
+.btn{
+display:inline-block;
+background:var(--gold);
+padding:15px 35px;
+margin-top:20px;
+color:white;
+text-decoration:none;
+border-radius:30px;
+}
+
+.section{
+padding:80px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:40px;
+color:var(--brown);
+margin-bottom:50px;
+}
+
+.categories{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+text-align:center;
+}
+
+.card h3{
+color:var(--brown);
+margin-bottom:10px;
+}
+
+.experts{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.expert{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.expert img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.expert-info{
+padding:20px;
+}
+
+.rating{
+color:gold;
+}
+
+.steps{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.step{
+background:white;
+padding:30px;
+border-radius:15px;
+text-align:center;
+}
+
+.pricing{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.plan{
+background:white;
+padding:35px;
+border-radius:15px;
+text-align:center;
+}
+
+.price{
+font-size:40px;
+color:var(--gold);
+margin:20px 0;
+}
+
+.testimonials{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+
+.testimonial{
+background:white;
+padding:30px;
+border-radius:15px;
+}
+
+footer{
+background:var(--brown);
+color:white;
+padding:50px 8%;
+text-align:center;
+}
+
+footer a{
+color:white;
+margin:0 10px;
+text-decoration:none;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:40px;
+}
+
+.search-box{
+flex-direction:column;
+border-radius:15px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+Expert<span>Journeys</span>
+</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Explore Experts</a>
+<a href="#">Destinations</a>
+<a href="#">Businesses</a>
+<a href="#">Pricing</a>
+<a href="#">Login</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Find Trusted Tourism Experts For Every Journey</h1>
+
+<p>
+Connect with professional tour guides, chefs, safari polers,
+travel consultants and local artisans.
+</p>
+
+<div class="search-box">
+
+<input type="text"
+placeholder="Search guides, chefs, polers, artisans...">
+
+<button>Search</button>
+
+</div>
+
+<a href="#" class="btn">Join As An Expert</a>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Expert Categories</h2>
+
+<div class="categories">
+
+<div class="card">
+<h3>Tour Guides</h3>
+<p>Professional destination experts.</p>
+</div>
+
+<div class="card">
+<h3>Chefs</h3>
+<p>Private and safari culinary specialists.</p>
+</div>
+
+<div class="card">
+<h3>Safari Polers</h3>
+<p>Authentic water safari experiences.</p>
+</div>
+
+<div class="card">
+<h3>Travel Consultants</h3>
+<p>Trip planning and travel advice.</p>
+</div>
+
+<div class="card">
+<h3>Local Artisans</h3>
+<p>Handcrafted cultural experiences.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Featured Experts</h2>
+
+<div class="experts">
+
+<div class="expert">
+
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200">
+
+<div class="expert-info">
+
+<h3>James M.</h3>
+
+<p>Professional Safari Guide</p>
+
+<div class="rating">★★★★★</div>
+
+</div>
+
+</div>
+
+<div class="expert">
+
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200">
+
+<div class="expert-info">
+
+<h3>Sarah K.</h3>
+
+<p>Luxury Safari Chef</p>
+
+<div class="rating">★★★★★</div>
+
+</div>
+
+</div>
+
+<div class="expert">
+
+<img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200">
+
+<div class="expert-info">
+
+<h3>Peter N.</h3>
+
+<p>Travel Consultant</p>
+
+<div class="rating">★★★★★</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">How It Works</h2>
+
+<div class="steps">
+
+<div class="step">
+<h3>Create Profile</h3>
+<p>Register and build your professional profile.</p>
+</div>
+
+<div class="step">
+<h3>Get Verified</h3>
+<p>Earn trust through verification.</p>
+</div>
+
+<div class="step">
+<h3>Get Discovered</h3>
+<p>Appear in searches and recommendations.</p>
+</div>
+
+<div class="step">
+<h3>Get Hired</h3>
+<p>Receive opportunities from travelers and businesses.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Membership Plans</h2>
+
+<div class="pricing">
+
+<div class="plan">
+
+<h3>Basic</h3>
+
+<div class="price">Free</div>
+
+<p>Basic profile</p>
+<p>Reviews</p>
+<p>Limited visibility</p>
+
+</div>
+
+<div class="plan">
+
+<h3>Standard</h3>
+
+<div class="price">$10</div>
+
+<p>Priority listing</p>
+<p>More profile details</p>
+<p>More exposure</p>
+
+</div>
+
+<div class="plan">
+
+<h3>Premium</h3>
+
+<div class="price">$25</div>
+
+<p>Top placement</p>
+<p>Photo gallery</p>
+<p>Featured badge</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">What Travelers Say</h2>
+
+<div class="testimonials">
+
+<div class="testimonial">
+"Best guide we ever hired in Botswana."
+</div>
+
+<div class="testimonial">
+"Found an amazing safari chef through ExpertJourneys."
+</div>
+
+<div class="testimonial">
+"Professional, trustworthy and easy to use."
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>ExpertJourneys</h2>
+
+<p>Elevating Travel Through Expertise</p>
+
+<br>
+
+<a href="#">About</a>
+<a href="#">Contact</a>
+<a href="#">Privacy</a>
+<a href="#">Terms</a>
+
+</footer>
+
+</body>
+</html>
+.hero{
+padding:100px 8%;
+background:#5C3A21;
+color:white;
+text-align:center;
+}
+
+.filters{
+padding:40px 8%;
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+justify-content:center;
+background:#F5EFE6;
+}
+
+.filters input,
+.filters select{
+padding:15px;
+border:none;
+border-radius:10px;
+min-width:180px;
+}
+
+.filters button{
+background:#C9A227;
+border:none;
+padding:15px 30px;
+color:white;
+border-radius:10px;
+cursor:pointer;
+}
+
+.experts-grid{
+padding:80px 8%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.expert-card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.expert-card img{
+width:100%;
+height:260px;
+object-fit:cover;
+}
+
+.expert-card h3,
+.expert-card p,
+.expert-card .stars{
+padding-left:20px;
+padding-right:20px;
+margin-top:10px;
+}
+
+.expert-card a{
+display:block;
+background:#5C3A21;
+color:white;
+text-decoration:none;
+text-align:center;
+padding:15px;
+margin-top:15px;
+}
+
+.stars{
+color:gold;
+font-size:18px;
+margin-bottom:15px;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expert Profile | ExpertJourneys</title>
+
+<style>
+body{
+font-family:Poppins,sans-serif;
+margin:0;
+background:#F5EFE6;
+}
+
+header{
+background:#5C3A21;
+padding:20px 8%;
+color:white;
+}
+
+.profile-banner{
+height:300px;
+background:url('https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1600') center/cover;
+}
+
+.profile-card{
+max-width:1200px;
+margin:-100px auto 50px;
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.profile-top{
+display:flex;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.profile-photo{
+width:250px;
+height:250px;
+border-radius:20px;
+object-fit:cover;
+}
+
+.badge{
+background:#C9A227;
+color:white;
+padding:8px 15px;
+border-radius:20px;
+display:inline-block;
+}
+
+.section{
+margin-top:40px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.review{
+background:#f8f8f8;
+padding:20px;
+margin-top:15px;
+border-radius:10px;
+}
+
+.btn{
+background:#5C3A21;
+color:white;
+padding:15px 30px;
+text-decoration:none;
+border-radius:10px;
+margin-right:10px;
 }
 </style>
 </head>
@@ -180,163 +835,611 @@ nav.show{display:flex}
 <body>
 
 <header>
-<div class="logo">ExpertJourneys</div>
-
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-<nav id="nav">
-<a onclick="show('home')">Home</a>
-<a onclick="show('experts')">Experts</a>
-<a onclick="show('dashboard')">Dashboard</a>
-<a onclick="openLogin()">Login</a>
-</nav>
+<h2>ExpertJourneys</h2>
 </header>
 
-<!-- HOME -->
-<div id="home" class="page active">
+<div class="profile-banner"></div>
 
-<div class="hero">
-<h1>Elevating Travel Through Expertise</h1>
-<p>Book trusted tourism professionals worldwide</p>
+<div class="profile-card">
+
+<div class="profile-top">
+
+<img class="profile-photo"
+src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e">
+
+<div>
+
+<h1>James Molefe</h1>
+
+<span class="badge">Premium Expert</span>
+
+<p>Professional Safari Guide</p>
+
+<p>📍 Botswana</p>
+
+<p>★★★★★ (4.9 Rating)</p>
+
+<p>
+15+ years guiding luxury safaris,
+cultural tours and wildlife adventures.
+</p>
+
+<br>
+
+<a href="#" class="btn">Hire Expert</a>
+
+<a href="#" class="btn">Message</a>
+
 </div>
 
-<div class="search">
-<input id="search" placeholder="Search experts..." oninput="filterExperts()">
 </div>
 
-<div class="grid" id="expertGrid"></div>
+<div class="section">
+
+<h2>About</h2>
+
+<p>
+Experienced safari guide specializing in wildlife,
+birdwatching, luxury safaris and cultural experiences
+across Botswana.
+</p>
+
 </div>
 
-<!-- EXPERTS -->
-<div id="experts" class="page">
-<h2 style="text-align:center">Featured Experts</h2>
-<div class="grid" id="expertGrid2"></div>
+<div class="section">
+
+<h2>Languages</h2>
+
+<ul>
+<li>English</li>
+<li>Setswana</li>
+<li>Basic French</li>
+</ul>
+
 </div>
 
-<!-- PROFILE -->
-<div id="profile" class="page">
-<div class="profile" id="profileBox"></div>
+<div class="section">
+
+<h2>Certifications</h2>
+
+<ul>
+<li>Professional Safari Guide License</li>
+<li>First Aid Certificate</li>
+<li>Tourism Management Diploma</li>
+</ul>
+
 </div>
 
-<!-- DASHBOARD -->
-<div id="dashboard" class="page">
-<h2 style="text-align:center">Dashboard</h2>
+<div class="section">
 
-<div class="dashboard">
-<div class="box">
-<h3>My Bookings</h3>
-<p id="bookings">No bookings yet</p>
-</div>
+<h2>Availability</h2>
 
-<div class="box">
-<h3>Profile Views</h3>
-<p>1,204 views</p>
-</div>
-</div>
+<p>
+Available Monday - Sunday
+</p>
+
+<p>
+Bookings accepted up to 6 months ahead.
+</p>
+
 </div>
 
-<!-- LOGIN -->
-<div class="modal" id="login">
-<div class="modal-content">
-<h3>Login</h3>
-<input placeholder="Email">
-<input placeholder="Password" type="password">
-<button class="btn primary">Login</button>
-<button class="btn secondary" onclick="closeLogin()">Close</button>
-</div>
+<div class="section">
+
+<h2>Gallery</h2>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e">
+
+<img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5">
+
+<img src="https://images.unsplash.com/photo-1528127269322-539801943592">
+
 </div>
 
-<script>
+</div>
 
-const experts = [
-{
-name:"John Safari",
-role:"Tour Guide",
-rating:"4.9",
-desc:"Professional safari guide in Botswana & Kenya",
-img:"https://images.unsplash.com/photo-1542038784456-1ea8e935640e"
-},
-{
-name:"Amina Chef",
-role:"Local Chef",
-rating:"4.8",
-desc:"Authentic African culinary experiences",
-img:"https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba"
+<div class="section">
+
+<h2>Traveler Reviews</h2>
+
+<div class="review">
+★★★★★ Amazing safari experience.
+</div>
+
+<div class="review">
+★★★★★ Professional and knowledgeable guide.
+</div>
+
+<div class="review">
+★★★★★ Best guide we found in Botswana.
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login | ExpertJourneys</title>
+
+<style>
+
+body{
+font-family:Poppins,sans-serif;
+background:#F5EFE6;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
 }
-];
 
-function render(){
-const grid = document.getElementById("expertGrid");
-const grid2 = document.getElementById("expertGrid2");
-
-grid.innerHTML = "";
-grid2.innerHTML = "";
-
-experts.forEach((e,i)=>{
-const card = `
-<div class="card" onclick="openProfile(${i})">
-<h3>${e.name}</h3>
-<p>${e.role} ⭐ ${e.rating}</p>
-</div>`;
-grid.innerHTML += card;
-grid2.innerHTML += card;
-});
+.container{
+width:100%;
+max-width:1000px;
+display:grid;
+grid-template-columns:1fr 1fr;
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
 }
 
-function show(page){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById(page).classList.add('active');
+.left{
+background:#5C3A21;
+color:white;
+padding:50px;
 }
 
-function openProfile(i){
-const e = experts[i];
-document.getElementById("profileBox").innerHTML = `
-<img src="${e.img}" style="width:100%;border-radius:12px">
-<h2>${e.name}</h2>
-<p>${e.desc}</p>
-
-<h3>Reviews</h3>
-<p>⭐ Amazing experience</p>
-<p>⭐ Highly recommended</p>
-
-<button class="btn primary" onclick="book('${e.name}')">Book Now</button>
-`;
-
-show('profile');
+.right{
+padding:50px;
 }
 
-function book(name){
-localStorage.setItem("booking", name);
-document.getElementById("bookings").innerText = "Booked: " + name;
-alert("Booking confirmed for " + name);
+input,select{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:10px;
 }
 
-function filterExperts(){
-let value = document.getElementById("search").value.toLowerCase();
-let filtered = experts.filter(e=>e.name.toLowerCase().includes(value));
-
-document.getElementById("expertGrid").innerHTML =
-filtered.map((e,i)=>`
-<div class="card" onclick="openProfile(${i})">
-<h3>${e.name}</h3>
-<p>${e.role}</p>
-</div>`).join("");
+button{
+width:100%;
+padding:15px;
+background:#C9A227;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
 
-function toggleMenu(){
-document.getElementById("nav").classList.toggle("show");
+.tabs{
+display:flex;
+gap:10px;
+margin-bottom:20px;
 }
 
-function openLogin(){
-document.getElementById("login").style.display="flex";
+.tab{
+background:#eee;
+padding:10px 15px;
+border-radius:10px;
 }
 
-function closeLogin(){
-document.getElementById("login").style.display="none";
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="left">
+
+<h1>ExpertJourneys</h1>
+
+<p>
+Elevating Travel Through Expertise
+</p>
+
+<br>
+
+<h3>Join As:</h3>
+
+<ul>
+<li>Tour Guide</li>
+<li>Chef</li>
+<li>Safari Poler</li>
+<li>Travel Consultant</li>
+<li>Local Artisan</li>
+<li>Traveler</li>
+<li>Travel Business</li>
+</ul>
+
+</div>
+
+<div class="right">
+
+<div class="tabs">
+
+<div class="tab">Login</div>
+
+<div class="tab">Register</div>
+
+</div>
+
+<h2>Create Account</h2>
+
+<input type="text" placeholder="Full Name">
+
+<input type="email" placeholder="Email Address">
+
+<input type="password" placeholder="Password">
+
+<select>
+
+<option>Select Account Type</option>
+
+<option>Tour Guide</option>
+
+<option>Chef</option>
+
+<option>Safari Poler</option>
+
+<option>Travel Consultant</option>
+
+<option>Local Artisan</option>
+
+<option>Traveler</option>
+
+<option>Travel Business</option>
+
+</select>
+
+<button>Create Account</button>
+
+</div>
+
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Businesses | ExpertJourneys</title>
+<style>
+body{font-family:Poppins,sans-serif;background:#F5EFE6;margin:0}
+.hero{
+background:#5C3A21;
+color:white;
+padding:100px 10%;
+text-align:center;
+}
+.section{
+padding:80px 10%;
+}
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+.card{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+.btn{
+background:#C9A227;
+padding:15px 30px;
+color:white;
+text-decoration:none;
+border-radius:10px;
+display:inline-block;
+margin-top:20px;
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+<h1>Hire Trusted Tourism Professionals</h1>
+<p>
+Find guides, chefs, polers, consultants and artisans
+for tours, safaris and travel experiences.
+</p>
+</section>
+
+<section class="section">
+
+<h2>Why Businesses Choose Us</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Verified Experts</h3>
+<p>
+Work with trusted professionals reviewed by travelers.
+</p>
+</div>
+
+<div class="card">
+<h3>Bulk Hiring</h3>
+<p>
+Source multiple experts for large tours and events.
+</p>
+</div>
+
+<div class="card">
+<h3>Premium Talent</h3>
+<p>
+Access top-rated experts across Africa.
+</p>
+</div>
+
+</div>
+
+<a class="btn" href="login.html">
+Become A Partner
+</a>
+
+</section>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pricing | ExpertJourneys</title>
+
+<style>
+body{
+font-family:Poppins,sans-serif;
+background:#F5EFE6;
+padding:50px;
 }
 
-render();
-</script>
+.pricing{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.plan{
+background:white;
+padding:40px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.price{
+font-size:48px;
+color:#C9A227;
+}
+
+button{
+background:#5C3A21;
+color:white;
+border:none;
+padding:15px 30px;
+border-radius:10px;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Membership Plans</h1>
+
+<div class="pricing">
+
+<div class="plan">
+<h2>Basic</h2>
+<div class="price">Free</div>
+<p>Basic Profile</p>
+<p>Ratings & Reviews</p>
+<p>Limited Visibility</p>
+<button>Join</button>
+</div>
+
+<div class="plan">
+<h2>Standard</h2>
+<div class="price">$10</div>
+<p>Priority Search Ranking</p>
+<p>Enhanced Profile</p>
+<p>More Visibility</p>
+<button>Join</button>
+</div>
+
+<div class="plan">
+<h2>Premium</h2>
+<div class="price">$25</div>
+<p>Featured Placement</p>
+<p>Photo Gallery</p>
+<p>Premium Badge</p>
+<p>Maximum Visibility</p>
+<button>Join</button>
+</div>
+
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Destinations | ExpertJourneys</title>
+
+<style>
+body{
+font-family:Poppins,sans-serif;
+margin:0;
+background:#F5EFE6;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:30px;
+padding:50px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.card h2,p{
+padding:15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 style="text-align:center">Explore Destinations</h1>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5">
+<h2>Botswana</h2>
+<p>Safari guides, chefs and local experts.</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1484318571209-661cf29a69c3">
+<h2>South Africa</h2>
+<p>Adventure, culture and premium tourism experts.</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e">
+<h2>Kenya</h2>
+<p>Wildlife experiences and safari specialists.</p>
+</div>
+
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>About Us</title>
+
+<style>
+body{
+font-family:Poppins,sans-serif;
+background:#F5EFE6;
+padding:80px;
+line-height:1.8;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>About ExpertJourneys</h1>
+
+<p>
+ExpertJourneys is a professional tourism network
+connecting skilled travel experts with travelers,
+travel agents, tour operators and tourism businesses.
+</p>
+
+<p>
+Our mission is to elevate travel experiences through
+trusted expertise while creating opportunities for
+tourism professionals across Africa and beyond.
+</p>
+
+<h2>Vision</h2>
+
+<p>
+To become the leading global platform connecting
+travelers with trusted tourism professionals.
+</p>
+
+<h2>Slogan</h2>
+
+<p>
+Elevating Travel Through Expertise.
+</p>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact Us</title>
+
+<style>
+body{
+font-family:Poppins,sans-serif;
+background:#F5EFE6;
+padding:50px;
+}
+
+form{
+max-width:700px;
+margin:auto;
+background:white;
+padding:40px;
+border-radius:15px;
+}
+
+input,textarea{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:10px;
+}
+
+button{
+background:#5C3A21;
+color:white;
+border:none;
+padding:15px 30px;
+border-radius:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<form>
+
+<h1>Contact ExpertJourneys</h1>
+
+<input type="text" placeholder="Full Name">
+
+<input type="email" placeholder="Email">
+
+<textarea rows="6" placeholder="Your Message"></textarea>
+
+<button>Send Message</button>
+
+</form>
 
 </body>
 </html>
