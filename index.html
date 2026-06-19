@@ -2,117 +2,68 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>ExpertJourneys Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ExpertJourneys</title>
 
 <style>
 :root{
   --brown:#5C3A21;
   --light:#F5EFE6;
   --gold:#C9A227;
-  --white:#ffffff;
-  --dark:#222;
+  --white:#fff;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, sans-serif;
-  scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+body{background:var(--light);}
 
-body{
-  background:var(--light);
-  color:var(--dark);
-}
-
-/* NAV */
 nav{
   background:var(--brown);
   color:white;
-  padding:15px;
   display:flex;
   justify-content:space-between;
+  padding:15px;
   align-items:center;
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
-
-nav h1{
-  font-size:20px;
-  letter-spacing:2px;
+  flex-wrap:wrap;
 }
 
 nav a{
   color:white;
-  margin:0 10px;
+  margin:5px;
   text-decoration:none;
-  font-size:14px;
+  cursor:pointer;
 }
 
-nav a:hover{
-  color:var(--gold);
-}
+nav a:hover{color:var(--gold);}
 
-/* HERO */
+.page{display:none;padding:20px;}
+.active{display:block;}
+
 .hero{
-  background:url('https://images.unsplash.com/photo-1527631746610-bca00a040d60') center/cover;
-  height:90vh;
+  background:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee') center/cover;
+  height:70vh;
+  color:white;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
+}
+
+.btn{
+  background:var(--brown);
   color:white;
-  padding:20px;
-}
-
-.hero h2{
-  font-size:40px;
-}
-
-.hero p{
-  margin-top:10px;
-  max-width:600px;
-}
-
-.search-bar{
-  margin-top:20px;
-  display:flex;
-}
-
-.search-bar input{
   padding:10px;
-  width:250px;
-  border:none;
-}
-
-.search-bar button{
-  padding:10px;
-  background:var(--gold);
   border:none;
   cursor:pointer;
-  color:white;
+  margin-top:10px;
 }
 
-/* SECTIONS */
-section{
-  padding:60px 20px;
-}
+.btn:hover{background:var(--gold);}
 
-h2.section-title{
-  text-align:center;
-  margin-bottom:30px;
-  color:var(--brown);
-}
-
-/* CARDS */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+  gap:15px;
 }
 
 .card{
@@ -122,206 +73,249 @@ h2.section-title{
   box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-.card img{
+.card img{width:100%;height:160px;object-fit:cover;}
+.card-content{padding:10px;}
+
+input{
+  padding:10px;
   width:100%;
-  height:180px;
-  object-fit:cover;
-}
-
-.card-content{
-  padding:15px;
-}
-
-.badge{
-  background:var(--gold);
-  color:white;
-  padding:3px 8px;
-  font-size:12px;
-  border-radius:5px;
-}
-
-/* PROFILE */
-.profile{
-  background:white;
-  padding:20px;
-  border-radius:10px;
-}
-
-/* FOOTER */
-footer{
-  background:var(--brown);
-  color:white;
-  text-align:center;
-  padding:20px;
-}
-
-/* BUTTON */
-.btn{
-  background:var(--brown);
-  color:white;
-  padding:10px 15px;
-  border:none;
-  cursor:pointer;
-  margin-top:10px;
-}
-
-.btn:hover{
-  background:var(--gold);
+  margin:5px 0;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
 <nav>
-  <h1>ExpertJourneys</h1>
+  <h2>ExpertJourneys</h2>
   <div>
-    <a href="#home">Home</a>
-    <a href="#explore">Explore</a>
-    <a href="#profiles">Experts</a>
-    <a href="#business">Business</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#contact">Contact</a>
+    <a onclick="go('home')">Home</a>
+    <a onclick="go('explore')">Explore</a>
+    <a onclick="go('experts')">Experts</a>
+    <a onclick="go('bookings')">Bookings</a>
+    <a onclick="go('login')">Login</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <h2>Elevating Travel Through Expertise 🌍</h2>
-  <p>Connect with trusted tour guides, chefs, safari experts, and travel professionals across Africa and beyond.</p>
+<!-- HOME -->
+<div id="home" class="page active">
 
-  <div class="search-bar">
-    <input type="text" placeholder="Search experts, destinations...">
-    <button>Search</button>
+  <div class="hero">
+    <h1>Elevating Travel Through Expertise 🌍</h1>
+    <button class="btn" onclick="go('explore')">Start Exploring</button>
   </div>
-</section>
+
+  <h2 style="padding:20px;">Featured Experts</h2>
+
+  <div class="grid" id="featured"></div>
+
+</div>
 
 <!-- EXPLORE -->
-<section id="explore">
-  <h2 class="section-title">Explore Experts</h2>
+<div id="explore" class="page">
 
-  <div class="grid">
+  <h2>Explore Experts</h2>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
-      <div class="card-content">
-        <span class="badge">Tour Guide</span>
-        <h3>Safari Guide Botswana</h3>
-        <p>Wildlife specialist with 10+ years experience.</p>
-      </div>
-    </div>
+  <input id="search" placeholder="Search experts..." onkeyup="renderExperts()">
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2">
-      <div class="card-content">
-        <span class="badge">Chef</span>
-        <h3>Travel Chef</h3>
-        <p>Luxury dining experiences on the move.</p>
-      </div>
-    </div>
+  <div class="grid" id="exploreGrid"></div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd">
-      <div class="card-content">
-        <span class="badge">Agent</span>
-        <h3>Travel Consultant</h3>
-        <p>Plan seamless international journeys.</p>
-      </div>
-    </div>
+</div>
 
-  </div>
-</section>
+<!-- EXPERT PAGE -->
+<div id="experts" class="page">
 
-<!-- PROFILES -->
-<section id="profiles">
-  <h2 class="section-title">Expert Profiles</h2>
+  <h2>Expert Profile</h2>
+  <div id="profile"></div>
 
-  <div class="profile">
-    <h3>John Safari Master</h3>
-    <p><b>Experience:</b> 12 Years</p>
-    <p><b>Languages:</b> English, Setswana</p>
-    <p><b>Services:</b> Safari tours, wildlife photography tours</p>
-    <p><b>Rating:</b> ⭐⭐⭐⭐⭐</p>
-    <button class="btn">Book Expert</button>
-  </div>
-</section>
+</div>
 
-<!-- BUSINESS -->
-<section id="business">
-  <h2 class="section-title">For Businesses</h2>
-  <p style="text-align:center; max-width:700px; margin:auto;">
-    Travel companies can hire verified experts for group tours, luxury experiences, and custom travel packages.
-  </p>
-</section>
+<!-- BOOKINGS -->
+<div id="bookings" class="page">
 
-<!-- REVIEWS -->
-<section id="reviews">
-  <h2 class="section-title">Reviews & Ratings</h2>
+  <h2>Your Bookings</h2>
+  <div id="bookingList"></div>
 
-  <div class="grid">
-    <div class="card">
-      <div class="card-content">
-        ⭐⭐⭐⭐⭐ <br>
-        “Best safari experience ever. Professional and safe.”
-      </div>
-    </div>
+</div>
 
-    <div class="card">
-      <div class="card-content">
-        ⭐⭐⭐⭐⭐ <br>
-        “The chef experience was unforgettable.”
-      </div>
-    </div>
-  </div>
-</section>
+<!-- LOGIN -->
+<div id="login" class="page">
 
-<!-- PRICING -->
-<section id="pricing">
-  <h2 class="section-title">Membership Plans</h2>
+  <h2>Login System</h2>
 
-  <div class="grid">
+  <input id="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
 
-    <div class="card">
-      <div class="card-content">
-        <h3>Basic</h3>
-        <p>Profile listing only</p>
-      </div>
-    </div>
+  <button class="btn" onclick="login()">Login</button>
 
-    <div class="card">
-      <div class="card-content">
-        <h3>Standard</h3>
-        <p>More visibility + booking access</p>
-      </div>
-    </div>
+  <p id="loginMsg"></p>
 
-    <div class="card">
-      <div class="card-content">
-        <h3>Premium</h3>
-        <p>Top ranking + featured placement</p>
-      </div>
-    </div>
+</div>
 
-  </div>
-</section>
+<script>
 
-<!-- CONTACT -->
-<section id="contact">
-  <h2 class="section-title">Contact Us</h2>
+/* ---------------- FAKE DATABASE ---------------- */
 
-  <p style="text-align:center;">
-    📧 expertjourneys@gmail.com <br>
-    📞 +267 75 36 1282 / +267 71 86 8310 <br>
-    📱 Instagram | Facebook | TikTok: @expertjourneys
-  </p>
-</section>
+let user = null;
 
-<!-- FOOTER -->
-<footer>
-  <p>ExpertJourneys © 2026 | Elevating Travel Through Expertise 🌍</p>
-</footer>
+const experts = [
+{
+id:1,
+name:"Safari Guide Botswana",
+type:"Tour Guide",
+img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+desc:"Wildlife expert with 10+ years experience"
+},
+{
+id:2,
+name:"Luxury Travel Chef",
+type:"Chef",
+img:"https://images.unsplash.com/photo-1551218808-94e220e084d2",
+desc:"Fine dining travel experiences"
+},
+{
+id:3,
+name:"Travel Consultant",
+type:"Agent",
+img:"https://images.unsplash.com/photo-1502920917128-1aa500764cbd",
+desc:"Global travel planning specialist"
+}
+];
+
+let bookings = [];
+
+/* ---------------- NAVIGATION ---------------- */
+
+function go(page){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(page).classList.add('active');
+
+if(page==="home") renderFeatured();
+if(page==="explore") renderExperts();
+if(page==="bookings") renderBookings();
+}
+
+/* ---------------- HOME ---------------- */
+
+function renderFeatured(){
+let box = document.getElementById("featured");
+box.innerHTML="";
+experts.forEach(e=>{
+box.innerHTML += card(e);
+});
+}
+
+/* ---------------- EXPLORE ---------------- */
+
+function renderExperts(){
+let box = document.getElementById("exploreGrid");
+let q = document.getElementById("search")?.value?.toLowerCase() || "";
+
+box.innerHTML="";
+
+experts
+.filter(e=>e.name.toLowerCase().includes(q))
+.forEach(e=>{
+box.innerHTML += card(e,true);
+});
+}
+
+/* ---------------- CARD ---------------- */
+
+function card(e,book=false){
+return `
+<div class="card">
+<img src="${e.img}">
+<div class="card-content">
+<h3>${e.name}</h3>
+<p>${e.desc}</p>
+
+${book ? `<button class="btn" onclick="book(${e.id})">Book</button>` : ""}
+<button class="btn" onclick="view(${e.id})">View</button>
+
+</div>
+</div>
+`;
+}
+
+/* ---------------- PROFILE ---------------- */
+
+function view(id){
+let e = experts.find(x=>x.id===id);
+
+document.getElementById("profile").innerHTML=`
+<div class="card">
+<img src="${e.img}">
+<div class="card-content">
+<h2>${e.name}</h2>
+<p>${e.desc}</p>
+
+<button class="btn" onclick="book(${e.id})">Book Now</button>
+</div>
+</div>
+`;
+
+go("experts");
+}
+
+/* ---------------- BOOKING SYSTEM ---------------- */
+
+function book(id){
+
+if(!user){
+alert("Please login first");
+go("login");
+return;
+}
+
+let e = experts.find(x=>x.id===id);
+bookings.push(e);
+
+alert("Booked: " + e.name);
+}
+
+/* ---------------- BOOKINGS ---------------- */
+
+function renderBookings(){
+let box = document.getElementById("bookingList");
+box.innerHTML="";
+
+if(bookings.length===0){
+box.innerHTML="<p>No bookings yet</p>";
+return;
+}
+
+bookings.forEach(b=>{
+box.innerHTML+=`
+<div class="card">
+<div class="card-content">
+<h3>${b.name}</h3>
+<p>${b.desc}</p>
+</div>
+</div>
+`;
+});
+}
+
+/* ---------------- LOGIN ---------------- */
+
+function login(){
+let email=document.getElementById("email").value;
+let pass=document.getElementById("password").value;
+
+if(email && pass){
+user = {email};
+document.getElementById("loginMsg").innerText="Logged in as "+email;
+go("home");
+}else{
+document.getElementById("loginMsg").innerText="Fill all fields";
+}
+}
+
+/* INIT */
+renderFeatured();
+
+</script>
 
 </body>
 </html>
