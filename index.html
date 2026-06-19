@@ -2,319 +2,178 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ExpertJourneys Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExpertRoutes | Elevating your travel with expertise</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
-:root{
-  --brown:#5C3A21;
-  --light:#F5EFE6;
-  --gold:#C9A227;
-  --white:#fff;
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8fafc;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
-body{background:var(--light);}
-
-nav{
-  background:var(--brown);
-  color:white;
-  display:flex;
-  justify-content:space-between;
-  padding:15px;
-  align-items:center;
-  flex-wrap:wrap;
+.hero-gradient {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 }
 
-nav a{
-  color:white;
-  margin:5px;
-  text-decoration:none;
-  cursor:pointer;
+.accent-gold {
+    color: #d4af37;
 }
 
-nav a:hover{color:var(--gold);}
-
-.page{display:none;padding:20px;}
-.active{display:block;}
-
-.hero{
-  background:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee') center/cover;
-  height:70vh;
-  color:white;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
+.bg-gold {
+    background-color: #d4af37;
 }
 
-.btn{
-  background:var(--brown);
-  color:white;
-  padding:10px;
-  border:none;
-  cursor:pointer;
-  margin-top:10px;
-}
-
-.btn:hover{background:var(--gold);}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:15px;
-}
-
-.card{
-  background:white;
-  border-radius:10px;
-  overflow:hidden;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-
-.card img{width:100%;height:160px;object-fit:cover;}
-.card-content{padding:10px;}
-
-input{
-  padding:10px;
-  width:100%;
-  margin:5px 0;
+/* FIXED TYPO HERE (was borderColor) */
+.border-gold {
+    border-color: #d4af37;
 }
 </style>
 </head>
 
-<body>
+<body class="text-slate-800 antialiased">
 
-<nav>
-  <h2>ExpertJourneys</h2>
-  <div>
-    <a onclick="go('home')">Home</a>
-    <a onclick="go('explore')">Explore</a>
-    <a onclick="go('experts')">Experts</a>
-    <a onclick="go('bookings')">Bookings</a>
-    <a onclick="go('login')">Login</a>
-  </div>
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-slate-900 text-white shadow-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+<div class="flex items-center space-x-2">
+<div class="bg-amber-500 p-2 rounded-lg text-slate-900">
+<i data-lucide="compass" class="w-6 h-6"></i>
+</div>
+<div>
+<span class="text-xl font-bold block">Expert<span class="text-amber-400">Routes</span></span>
+<span class="text-[10px] text-slate-400 uppercase block -mt-1">Talent Universe</span>
+</div>
+</div>
+
+<nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+<a href="#explore" class="hover:text-amber-400">Explore Experts</a>
+<a href="#business" class="hover:text-amber-400">For Businesses</a>
+<a href="#how-it-works" class="hover:text-amber-400">How It Works</a>
+<a href="#pricing" class="hover:text-amber-400">Pricing</a>
+<a href="#destinations" class="hover:text-amber-400">Destinations</a>
 </nav>
 
-<!-- HOME -->
-<div id="home" class="page active">
-
-  <div class="hero">
-    <h1>Elevating Travel Through Expertise 🌍</h1>
-    <button class="btn" onclick="go('explore')">Start Exploring</button>
-  </div>
-
-  <h2 style="padding:20px;">Featured Experts</h2>
-
-  <div class="grid" id="featured"></div>
+<div class="flex items-center space-x-4">
+<a href="#login" class="text-sm hover:text-amber-400">Log In</a>
+<a href="#signup" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-4 py-2 rounded-lg text-sm font-semibold">
+Join as Expert
+</a>
+</div>
 
 </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-gradient text-white py-24 px-4 relative overflow-hidden">
+<div class="max-w-4xl mx-auto text-center relative z-10">
+
+<span class="bg-slate-800/80 text-amber-400 text-xs px-4 py-1.5 rounded-full uppercase tracking-wider">
+Marketplace & Trust System
+</span>
+
+<h1 class="text-4xl sm:text-6xl font-extrabold mt-6 mb-6">
+Elevating your travel with <span class="text-amber-400">expertise.</span>
+</h1>
+
+<p class="text-lg text-slate-300 mb-10">
+Connect with certified guides, chefs, safari professionals, and travel experts worldwide.
+</p>
+
+<!-- SEARCH -->
+<div class="bg-white p-2 rounded-2xl shadow-2xl max-w-3xl mx-auto flex flex-col md:flex-row gap-2 text-slate-800">
+
+<div class="flex-1 flex items-center px-4 border-b md:border-b-0 md:border-r">
+<i data-lucide="search" class="text-slate-400 mr-3 w-5 h-5"></i>
+<input type="text" placeholder="Search experts..." class="w-full outline-none text-sm">
+</div>
+
+<div class="flex-1 flex items-center px-4">
+<i data-lucide="map-pin" class="text-slate-400 mr-3 w-5 h-5"></i>
+<select class="w-full text-sm outline-none">
+<option>Botswana 🇧🇼</option>
+<option>South Africa 🇿🇦</option>
+<option>Kenya 🇰🇪</option>
+</select>
+</div>
+
+<button class="bg-slate-900 text-white px-8 py-3 rounded-xl text-sm font-semibold">
+Search
+</button>
+
+</div>
+</div>
+</section>
 
 <!-- EXPLORE -->
-<div id="explore" class="page">
+<section id="explore" class="max-w-7xl mx-auto px-4 py-20">
 
-  <h2>Explore Experts</h2>
+<div class="flex flex-col md:flex-row justify-between mb-10">
+<div>
+<h2 class="text-3xl font-bold">Browse Tourism Professionals</h2>
+<p class="text-slate-500 mt-2">Verified experts for your journeys.</p>
+</div>
+</div>
 
-  <input id="search" placeholder="Search experts..." onkeyup="renderExperts()">
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
 
-  <div class="grid" id="exploreGrid"></div>
+<!-- FILTER -->
+<div class="bg-white p-6 rounded-2xl border h-fit space-y-6">
+<h3 class="font-bold text-sm uppercase flex justify-between">
+Filter Experts <i data-lucide="sliders" class="w-4 h-4"></i>
+</h3>
+
+<div>
+<p class="text-xs font-semibold mb-2">Location</p>
+<label class="block text-sm"><input type="checkbox" checked> Botswana</label>
+<label class="block text-sm"><input type="checkbox"> South Africa</label>
+<label class="block text-sm"><input type="checkbox"> Kenya</label>
+</div>
+
+<div>
+<p class="text-xs font-semibold mb-2">Rating</p>
+<label class="block text-sm"><input type="radio" name="r"> 4.5+</label>
+<label class="block text-sm"><input type="radio" name="r"> 4.0+</label>
+<label class="block text-sm"><input type="radio" name="r"> 3.5+</label>
+</div>
 
 </div>
 
-<!-- EXPERT PAGE -->
-<div id="experts" class="page">
+<!-- CARDS -->
+<div class="lg:col-span-3 grid sm:grid-cols-2 gap-6">
 
-  <h2>Expert Profile</h2>
-  <div id="profile"></div>
+<div class="bg-white p-6 rounded-xl border">
+<h4 class="font-bold">Safari Guide</h4>
+<p class="text-sm text-slate-500">Okavango Delta Specialist</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl border">
+<h4 class="font-bold">Bush Chef</h4>
+<p class="text-sm text-slate-500">Traditional & Luxury Meals</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl border">
+<h4 class="font-bold">Tour Agent</h4>
+<p class="text-sm text-slate-500">Custom Travel Planning</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl border">
+<h4 class="font-bold">Safari Poler</h4>
+<p class="text-sm text-slate-500">Mokoro Navigation Expert</p>
+</div>
 
 </div>
 
-<!-- BOOKINGS -->
-<div id="bookings" class="page">
-
-  <h2>Your Bookings</h2>
-  <div id="bookingList"></div>
-
 </div>
-
-<!-- LOGIN -->
-<div id="login" class="page">
-
-  <h2>Login System</h2>
-
-  <input id="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Password">
-
-  <button class="btn" onclick="login()">Login</button>
-
-  <p id="loginMsg"></p>
-
-</div>
+</section>
 
 <script>
-
-/* ---------------- FAKE DATABASE ---------------- */
-
-let user = null;
-
-const experts = [
-{
-id:1,
-name:"Safari Guide Botswana",
-type:"Tour Guide",
-img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
-desc:"Wildlife expert with 10+ years experience"
-},
-{
-id:2,
-name:"Luxury Travel Chef",
-type:"Chef",
-img:"https://images.unsplash.com/photo-1551218808-94e220e084d2",
-desc:"Fine dining travel experiences"
-},
-{
-id:3,
-name:"Travel Consultant",
-type:"Agent",
-img:"https://images.unsplash.com/photo-1502920917128-1aa500764cbd",
-desc:"Global travel planning specialist"
-}
-];
-
-let bookings = [];
-
-/* ---------------- NAVIGATION ---------------- */
-
-function go(page){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById(page).classList.add('active');
-
-if(page==="home") renderFeatured();
-if(page==="explore") renderExperts();
-if(page==="bookings") renderBookings();
-}
-
-/* ---------------- HOME ---------------- */
-
-function renderFeatured(){
-let box = document.getElementById("featured");
-box.innerHTML="";
-experts.forEach(e=>{
-box.innerHTML += card(e);
-});
-}
-
-/* ---------------- EXPLORE ---------------- */
-
-function renderExperts(){
-let box = document.getElementById("exploreGrid");
-let q = document.getElementById("search")?.value?.toLowerCase() || "";
-
-box.innerHTML="";
-
-experts
-.filter(e=>e.name.toLowerCase().includes(q))
-.forEach(e=>{
-box.innerHTML += card(e,true);
-});
-}
-
-/* ---------------- CARD ---------------- */
-
-function card(e,book=false){
-return `
-<div class="card">
-<img src="${e.img}">
-<div class="card-content">
-<h3>${e.name}</h3>
-<p>${e.desc}</p>
-
-${book ? `<button class="btn" onclick="book(${e.id})">Book</button>` : ""}
-<button class="btn" onclick="view(${e.id})">View</button>
-
-</div>
-</div>
-`;
-}
-
-/* ---------------- PROFILE ---------------- */
-
-function view(id){
-let e = experts.find(x=>x.id===id);
-
-document.getElementById("profile").innerHTML=`
-<div class="card">
-<img src="${e.img}">
-<div class="card-content">
-<h2>${e.name}</h2>
-<p>${e.desc}</p>
-
-<button class="btn" onclick="book(${e.id})">Book Now</button>
-</div>
-</div>
-`;
-
-go("experts");
-}
-
-/* ---------------- BOOKING SYSTEM ---------------- */
-
-function book(id){
-
-if(!user){
-alert("Please login first");
-go("login");
-return;
-}
-
-let e = experts.find(x=>x.id===id);
-bookings.push(e);
-
-alert("Booked: " + e.name);
-}
-
-/* ---------------- BOOKINGS ---------------- */
-
-function renderBookings(){
-let box = document.getElementById("bookingList");
-box.innerHTML="";
-
-if(bookings.length===0){
-box.innerHTML="<p>No bookings yet</p>";
-return;
-}
-
-bookings.forEach(b=>{
-box.innerHTML+=`
-<div class="card">
-<div class="card-content">
-<h3>${b.name}</h3>
-<p>${b.desc}</p>
-</div>
-</div>
-`;
-});
-}
-
-/* ---------------- LOGIN ---------------- */
-
-function login(){
-let email=document.getElementById("email").value;
-let pass=document.getElementById("password").value;
-
-if(email && pass){
-user = {email};
-document.getElementById("loginMsg").innerText="Logged in as "+email;
-go("home");
-}else{
-document.getElementById("loginMsg").innerText="Fill all fields";
-}
-}
-
-/* INIT */
-renderFeatured();
-
+lucide.createIcons();
 </script>
 
 </body>
