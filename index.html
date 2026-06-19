@@ -2,41 +2,89 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ExpertJourneys</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExpertJourneys V3</title>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
 <style>
-body{font-family:Arial;margin:0;background:#f5efe6}
-nav{background:#5C3A21;color:white;padding:15px;display:flex;justify-content:space-between;flex-wrap:wrap}
-nav button{background:#C9A227;border:none;color:white;padding:8px;margin:3px;cursor:pointer}
-.page{display:none;padding:20px}
-.active{display:block}
-.card{background:white;padding:15px;margin:10px 0;border-radius:10px}
-input,textarea{width:100%;padding:10px;margin:5px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+body{
+  margin:0;
+  font-family:Arial;
+  background:#f5efe6;
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+  background:#5C3A21;
+  color:white;
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+nav button{
+  background:#C9A227;
+  border:none;
+  padding:8px;
+  border-radius:6px;
+  color:white;
+  margin:3px;
+}
+
+/* PAGES */
+.page{display:none;padding:16px;}
+.active{display:block;}
+
+.card{
+  background:white;
+  padding:12px;
+  margin:10px 0;
+  border-radius:10px;
+}
+
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:10px;
+}
+
+button{cursor:pointer;}
+img{max-width:100%;border-radius:10px;}
 </style>
 </head>
 
 <body>
 
 <nav>
-<div>🌍 ExpertJourneys</div>
+<div>🌍 ExpertJourneys V3</div>
 <div>
 <button onclick="go('home')">Home</button>
 <button onclick="go('explore')">Explore</button>
 <button onclick="go('dashboard')">Dashboard</button>
 <button onclick="go('bookings')">Bookings</button>
 <button onclick="go('messages')">Messages</button>
+<button onclick="go('profile')">Profile</button>
 <button onclick="logout()">Logout</button>
 </div>
 </nav>
 
-<!-- 🔐 HOME -->
+<!-- HOME -->
 <div id="home" class="page active">
 <h2>Login / Signup</h2>
+
 <div class="card">
 <input id="email" placeholder="Email">
 <input id="password" type="password" placeholder="Password">
@@ -45,154 +93,294 @@ input,textarea{width:100%;padding:10px;margin:5px 0}
 </div>
 </div>
 
-<!-- 🏡 EXPLORE -->
+<!-- PROFILE -->
+<div id="profile" class="page">
+<h2>My Profile</h2>
+
+<div class="card">
+<input id="name" placeholder="Full Name">
+<textarea id="bio" placeholder="Bio"></textarea>
+<input type="file" id="avatar">
+
+<button onclick="saveProfile()">Save Profile</button>
+</div>
+
+<div id="profileBox"></div>
+</div>
+
+<!-- EXPLORE -->
 <div id="explore" class="page">
 <h2>Explore Experts</h2>
 <div id="listings" class="grid"></div>
 </div>
 
-<!-- 📊 DASHBOARD -->
+<!-- DASHBOARD -->
 <div id="dashboard" class="page">
-<h2>Dashboard</h2>
+<h2>Create Listing</h2>
 
 <div class="card">
-<h3>Create Listing (Experts)</h3>
 <input id="title" placeholder="Title">
 <input id="price" placeholder="Price">
 <input id="location" placeholder="Location">
+<textarea id="desc" placeholder="Description"></textarea>
+<input type="file" id="image">
+
 <button onclick="createListing()">Add Listing</button>
 </div>
 
 <div id="myListings"></div>
 </div>
 
-<!-- 📅 BOOKINGS -->
+<!-- BOOKINGS -->
 <div id="bookings" class="page">
 <h2>Bookings</h2>
 <div id="bookingsBox"></div>
 </div>
 
-<!-- 💬 MESSAGES -->
+<!-- MESSAGES -->
 <div id="messages" class="page">
-<h2>Messages</h2>
+<h2>Booking Chat</h2>
 
-<div id="chat" class="card" style="height:200px;overflow:auto"></div>
+<input id="chatRoomId" placeholder="Booking ID to open chat">
+<button onclick="loadChat()">Open Chat</button>
 
-<input id="msg" placeholder="Type message">
+<div id="chat" class="card" style="height:200px;overflow:auto;"></div>
+
+<input id="msg" placeholder="Message">
 <button onclick="sendMsg()">Send</button>
 </div>
 
 <script>
 
-// 🔥 FIREBASE (PUT YOUR CONFIG HERE)
+/* FIREBASE */
 const firebaseConfig = {
- apiKey:"YOUR_KEY",
- authDomain:"YOUR_DOMAIN",
- projectId:"YOUR_ID"
+  apiKey:"YOUR_KEY",
+  authDomain:"YOUR_DOMAIN",
+  projectId:"YOUR_ID"
 };
 
 firebase.initializeApp(firebaseConfig);
+
 const auth = firebase.auth();
 const db = firebase.firestore();
 
 let user=null;
+let currentRoom=null;
 
-// 🌍 NAVIGATION SYSTEM (FAKE PAGES)
-function go(page){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- document.getElementById(page).classList.add('active');
+/* NAV */
+function go(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById(p).classList.add('active');
 }
 
-// 🔐 AUTH
+/* AUTH */
 function signup(){
- auth.createUserWithEmailAndPassword(email.value,password.value)
+  auth.createUserWithEmailAndPassword(email.value,password.value)
+  .catch(e=>alert(e.message));
 }
 
 function login(){
- auth.signInWithEmailAndPassword(email.value,password.value)
+  auth.signInWithEmailAndPassword(email.value,password.value)
+  .catch(e=>alert(e.message));
 }
 
 function logout(){
- auth.signOut();
- location.reload();
+  auth.signOut();
+  location.reload();
 }
 
-// 👤 USER STATE
+/* USER */
 auth.onAuthStateChanged(u=>{
- if(u){
-   user=u;
-   go('explore');
-   loadListings();
-   loadBookings();
-   loadMessages();
- }
+  if(u){
+    user=u;
+    go("explore");
+    loadListings();
+    loadMyListings();
+    loadBookings();
+  }
 });
 
-// 🏡 LISTINGS
+/* PROFILE */
+function saveProfile(){
+  let file=document.getElementById("avatar").files[0];
+
+  if(file){
+    let reader=new FileReader();
+    reader.onload=()=>{
+      db.collection("profiles").doc(user.uid).set({
+        name:name.value,
+        bio:bio.value,
+        avatar:reader.result
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+db.collection("profiles").onSnapshot(snap=>{
+  let html="";
+  snap.forEach(d=>{
+    let p=d.data();
+    html+=`
+    <div class="card">
+      <img src="${p.avatar||''}">
+      <h3>${p.name}</h3>
+      <p>${p.bio}</p>
+    </div>`;
+  });
+  profileBox.innerHTML=html;
+});
+
+/* LISTINGS */
 function createListing(){
- db.collection("listings").add({
-   title:title.value,
-   price:price.value,
-   location:location.value,
-   owner:user.uid
- });
+  let file=document.getElementById("image").files[0];
+
+  let save=(img)=>{
+    db.collection("listings").add({
+      title:title.value,
+      price:price.value,
+      location:location.value,
+      desc:desc.value,
+      image:img||"",
+      owner:user.uid,
+      ratingSum:0,
+      ratingCount:0
+    });
+  };
+
+  if(file){
+    let r=new FileReader();
+    r.onload=()=>save(r.result);
+    r.readAsDataURL(file);
+  }else save("");
 }
 
 function loadListings(){
- db.collection("listings").onSnapshot(snap=>{
- let html="";
- snap.forEach(d=>{
-   let x=d.data();
-   html+=`
-   <div class="card">
-     <h3>${x.title}</h3>
-     <p>${x.location}</p>
-     <b>${x.price}</b>
-     <button onclick="book('${d.id}')">Book</button>
-   </div>`;
- });
- listings.innerHTML=html;
- });
+  db.collection("listings").onSnapshot(snap=>{
+    let html="";
+
+    snap.forEach(doc=>{
+      let d=doc.data();
+
+      let avg = d.ratingCount ? (d.ratingSum/d.ratingCount).toFixed(1) : "New";
+
+      html+=`
+      <div class="card">
+        <img src="${d.image}">
+        <h3>${d.title}</h3>
+        <p>${d.location}</p>
+        <p>${d.desc}</p>
+        <b>${d.price}</b>
+        <p>⭐ ${avg}</p>
+
+        <button onclick="book('${doc.id}')">Book</button>
+        <button onclick="rate('${doc.id}')">Rate ⭐</button>
+      </div>`;
+    });
+
+    listings.innerHTML=html;
+  });
 }
 
-// 📅 BOOKINGS
+/* MY LISTINGS */
+function loadMyListings(){
+  db.collection("listings")
+  .where("owner","==",user.uid)
+  .onSnapshot(snap=>{
+    let html="";
+    snap.forEach(d=>{
+      html+=`<div class="card">${d.data().title}</div>`;
+    });
+    myListings.innerHTML=html;
+  });
+}
+
+/* BOOKINGS */
 function book(id){
- db.collection("bookings").add({
-   listingId:id,
-   user:user.uid,
-   status:"pending"
- });
+  let bookingRef=db.collection("bookings").doc();
+
+  bookingRef.set({
+    listingId:id,
+    user:user.uid,
+    status:"pending"
+  });
+
+  alert("Booked! Booking ID: "+bookingRef.id);
 }
 
 function loadBookings(){
- db.collection("bookings").onSnapshot(snap=>{
- let html="";
- snap.forEach(d=>{
-   html+=`<div class="card">${d.data().status}</div>`;
- });
- bookingsBox.innerHTML=html;
- });
+  db.collection("bookings").onSnapshot(async snap=>{
+    let html="";
+
+    for(let d of snap.docs){
+      let data=d.data();
+      let listing=await db.collection("listings").doc(data.listingId).get();
+
+      html+=`
+      <div class="card">
+        <h3>${listing.data()?.title}</h3>
+        <p>Status: ${data.status}</p>
+        <button onclick="openChat('${d.id}')">Chat</button>
+      </div>`;
+    }
+
+    bookingsBox.innerHTML=html;
+  });
 }
 
-// 💬 MESSAGES
+/* RATING */
+function rate(id){
+  let val=prompt("Rate 1-5 ⭐");
+
+  let num=parseInt(val);
+
+  if(num>=1 && num<=5){
+    let ref=db.collection("listings").doc(id);
+
+    ref.get().then(doc=>{
+      let d=doc.data();
+
+      ref.update({
+        ratingSum:(d.ratingSum||0)+num,
+        ratingCount:(d.ratingCount||0)+1
+      });
+    });
+  }
+}
+
+/* CHAT SYSTEM */
+function openChat(id){
+  currentRoom=id;
+  go("messages");
+  loadChat();
+}
+
+function loadChat(){
+  if(!currentRoom) currentRoom=chatRoomId.value;
+
+  db.collection("chats")
+  .where("room", "==", currentRoom)
+  .orderBy("time")
+  .onSnapshot(snap=>{
+    let html="";
+    snap.forEach(d=>{
+      html+=`<p>${d.data().text}</p>`;
+    });
+    chat.innerHTML=html;
+  });
+}
+
 function sendMsg(){
- db.collection("messages").add({
-   text:msg.value,
-   time:Date.now()
- });
- msg.value="";
-}
+  if(!currentRoom) currentRoom=chatRoomId.value;
 
-function loadMessages(){
- db.collection("messages")
- .orderBy("time")
- .onSnapshot(snap=>{
- let html="";
- snap.forEach(d=>{
-   html+=`<p>${d.data().text}</p>`;
- });
- chat.innerHTML=html;
- });
+  db.collection("chats").add({
+    room:currentRoom,
+    text:msg.value,
+    user:user.uid,
+    time:Date.now()
+  });
+
+  msg.value="";
 }
 
 </script>
